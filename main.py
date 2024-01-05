@@ -1,16 +1,32 @@
-# This is a sample Python script.
+# This is a QR generator
+from tkinter import *
+import pyqrcode
+# Pillow fork of PIL
+from PIL import ImageTk, Image
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+root = Tk()
 
+canvas = Canvas(root, width=400, height=600)
+canvas.pack()
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+app_label = Label(root, text="QR code Generator", fg='blue', font=("arial", 30))
+canvas.create_window(200, 50, window=app_label)
 
+# Adding labels
+name_label = Label(root, text="Link name", font=("arial", 15))
+link_label = Label(root, text="Link", font=("arial", 15))
+canvas.create_window(200, 100, window=name_label)
+canvas.create_window(200, 160, window=link_label)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# Adding input fields
+name_entry = Entry(root)
+link_entry = Entry(root)
+canvas.create_window(200, 120, window=name_entry)
+canvas.create_window(200, 180, window=link_entry)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# Add Button
+button = Button(text="Generate QR")
+canvas.create_window(200, 250, window=button)
+
+# start GUI
+root.mainloop()
